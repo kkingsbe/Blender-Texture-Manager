@@ -31,7 +31,6 @@ export default async function handler(req, res) {
     if(req.method == "POST") {
         try {
             let {name} = req.body
-            console.log(name)
             let data = await scrape(`https://ambientcg.com/view?id=${name.replace(" ", "")}`)
             //let data = {}
             res.json({ success: true, data});

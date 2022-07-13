@@ -13,9 +13,13 @@
   "dependencies": {
     "axios": "^0.27.2",
     "cheerio": "^1.0.0-rc.12",
+    "decompress-zip": "^0.3.3",
+    "edit-json-file": "^1.7.0",
+    "electron-dl": "^3.3.1",
     "electron-serve": "^1.1.0",
     "electron-store": "^8.0.1",
-    "next-connect": "^1.0.0-next.1"
+    "next-connect": "^1.0.0-next.1",
+    "react-toastify": "^9.0.5"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.7",
