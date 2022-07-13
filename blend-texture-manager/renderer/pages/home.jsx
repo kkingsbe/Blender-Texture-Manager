@@ -1,6 +1,7 @@
 import React from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
+import TextureList from '../components/TextureList';
 import axios from "axios"
 import {useEffect, useState} from "react"
 
@@ -47,10 +48,14 @@ function Home() {
     getTextures()
   }, [])
 
+  useEffect(() => {
+    setFilteredTextures(textures)
+  }, [textures])
+
   return (
     <div className="flex flex-col bg-slate-50 font-[Ubuntu]">
       <Head>
-        <title>Home - Nextron (with-javascript)</title>
+        <title>Available Textures</title>
       </Head>
       <div className="flex flex-row justify-between mt-3 mb-10 mx-3">
         <p className="font-bold text-5xl mt-5 mb-10">Available Textures</p>
@@ -59,13 +64,7 @@ function Home() {
         </div>
       </div>
       
-      <div className="mx-auto grid grid-cols-4 gap-10 mb-20">
-        {filteredTextures.map((item, index) => {
-          return (
-            <TextureCard data={item} key={index}></TextureCard>
-          )
-        })}
-      </div>
+      <TextureList textures={filteredTextures}></TextureList>
     </div>
   );
 };
