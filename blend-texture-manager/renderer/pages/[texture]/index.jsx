@@ -12,6 +12,15 @@ const BackButton = () =>{
         </Link>
     )
 }
+
+const DownloadButton = ({size, url}) => {
+    return (
+        <div className="bg-slate-400 w-full text-white text-xl py-2 px-10 rounded-lg shadow-lg mx-auto cursor-pointer transition-all hover:scale-105">
+            <p>{size}</p>
+        </div>
+    )
+}
+
 const TextureDetails = () => {
     const router = useRouter()
     const {texture} = router.query
@@ -35,16 +44,14 @@ const TextureDetails = () => {
                 <p className="my-auto mr-2 text-3xl font-semibold">{texture}</p>
             </div>
 
-            <div className="h-[30vh] mx-auto mb-12">
+            <div className="h-[50vh] mx-auto mb-12">
                 <img src={imgUrl} className="h-full"/>
             </div>
 
             <div className="grid grid-cols-2 gap-5 w-fit mx-auto my-auto">
                 {links.map((item, index) => {
                     return (
-                        <div className="bg-slate-400 w-full text-white text-xl py-2 px-10 rounded-lg shadow-lg mx-auto">
-                            <p>{item.size}</p>
-                        </div>
+                        <DownloadButton size={item.size} url={item.url}></DownloadButton>
                     )
                 })}
             </div>

@@ -6,7 +6,11 @@ async function scrape(url) {
 
     const {data} = await axios.get(url)
     const $ = cheerio.load(data)
-    const mainImg = $(".OnlyShowLight").attr("src")
+    const images = $(".OnlyShowLight")
+    var mainImg
+    images.each((ind, el) => {
+        if($(el).attr("width") == "1024") mainImg = $(el).attr("src")
+    })
     const downloadButtons = $(".DownloadButton")
     result.links = []
     downloadButtons.each((ind, el) => {
@@ -19,7 +23,7 @@ async function scrape(url) {
         }
     })
     result.image = mainImg
-    
+
     return result
 }
 
